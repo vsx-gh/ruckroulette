@@ -1,0 +1,7 @@
+{% extends "index.html" %}
+{% block content %}
+<h5>Do these:</h5>
+{% for item in workout %}
+{{ item.name }}<br />
+{% endfor %}
+{% endblock %}
