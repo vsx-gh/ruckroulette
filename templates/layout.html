@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css' ) }}">
+    <script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+    <title>Ruck Roulette</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark navbar-inverse navbar-expand-md navbar-fixed-top navbar">
+        <a class="navbar-brand" href="#">Ruck Roulette</a>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item {% if request.endpoint == 'get_workout' or request.endpoint == 'display_dropdown' %}active{% else %}{% endif %}">
+                <a class="nav-link" href="{{ url_for('display_dropdown') }}">Get</a><span class="sr-only">(current)</span></a>
+            </li>
+            <li {% if request.endpoint == 'create_workout' %}class="nav-item active"{% else %}class="nav-item"{% endif %}>
+                <a class="nav-link" href="{{ url_for('create_workout') }}">Create</a>
+            </li>
+        </ul>
+    </nav>
+    {% block content %}{% endblock %}
+</body>
+</html>
